@@ -1,2 +1,4 @@
-Category,Date,Amount
-food,20-08-2025,1000.0
+Category,Date,Amount,Other info
+Bills,01-08-2025,1000.0,gas bill
+Bills,02-08-2025,24000.0,electricity
+food,03-08-2025,3000.0,eating out
