@@ -32,7 +32,7 @@ if choice.lower() == "y":
                 writer.writerow(fieldrows)
 
         else:
-            with open(file_path, "w") as csvfile:
+            with open(file_path, "w", newline="") as csvfile:
                 fieldnames = ["Category", "Date", "Amount", "Other info"]
                 csvwriter = csv.writer(csvfile)
                 csvwriter.writerow(fieldnames)
@@ -62,9 +62,7 @@ with open(file_path, "r") as csvfile:
     for cat, amt in zip(categories, amounts):
         category_sums[cat] = category_sums.get(cat, 0) + amt
 
-    print(category_sums.keys())
-
-    plt.pie(category_sums.values(), labels = category_sums.keys(), autopct = lambda pct: f"{int(round(pct/100.*sum(category_sums.values())))}PKR")
+    plt.pie(category_sums.values(), labels = category_sums.keys(), autopct = lambda pct: f"{int(round(pct/100.*sum(category_sums.values())))} PKR ({pct:.1f}%)")
     plt.title("Expenses")
     plt.show()
     
