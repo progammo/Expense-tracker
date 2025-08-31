@@ -1,4 +1,9 @@
-Category,Date,Amount,Other info
+Category,Date,Amount,Other info
+
 Bills,01-08-2025,1000.0,gas bill
 Bills,02-08-2025,24000.0,electricity
-food,03-08-2025,3000.0,eating out
+Food,03-08-2025,3000.0,eating out
+Food,05-08-2025,25000.0,groceries
+Transportation,04-08-2025,11980.0,car petrol
+Bills,05-08-2025,3400.0,internet 
+Transportation,07-08-2025,450.0,indrive

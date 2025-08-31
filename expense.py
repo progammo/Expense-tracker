@@ -24,7 +24,7 @@ if choice.lower() == "y":
                 print("Not a valid entry for date")
         expense_amount = float(input("Enter amount: "))
 
-        fieldrows = [expense_category, expense_date, expense_amount, expense_information]
+        fieldrows = [expense_category.capitalize(), expense_date, expense_amount, expense_information]
 
         if os.path.exists(file_path):
             with open(file_path, "a", newline="") as csvfile:     
@@ -46,5 +46,26 @@ if choice.lower() == "y":
 
 elif choice.lower() == "n":
     print("No expense added")
+
+with open(file_path, "r") as csvfile:
+    csv_reader = csv.reader(csvfile)
+    next(csv_reader)
+
+    categories = list()
+    amounts = list()
+    for line in csv_reader:
+        if len(line) > 3:
+            categories.append(line[0])
+            amounts.append(float(line[2]))
     
-print("Program Ended")
+    category_sums = {}
+    for cat, amt in zip(categories, amounts):
+        category_sums[cat] = category_sums.get(cat, 0) + amt
+
+    print(category_sums.keys())
+
+    plt.pie(category_sums.values(), labels = category_sums.keys(), autopct = lambda pct: f"{int(round(pct/100.*sum(category_sums.values())))}PKR")
+    plt.title("Expenses")
+    plt.show()
+    
+
